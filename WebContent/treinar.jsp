@@ -26,14 +26,14 @@
 			<div class="form-group">
 				<label for="distancia" class="form-label">Distância
 					Residencial de Panambi (em Km)</label> <input class="form-control"
-					type="number" id="distancia" name="distancia">
+					type="number" id="distancia" name="distancia" required="required">
 				<p style="color: red">Digite 0 se for em Panambi</p>
 			</div>
 
 			<div class="form-group">
 				<label for="dataNasc">Data de Nascimento</label> <input
 					class="form-control" type="date" id="example-datetime-local-input"
-					name="dataNasc">
+					name="dataNasc" required="required">
 			</div>
 
 			<div class="form-group">
