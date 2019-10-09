@@ -2,7 +2,6 @@ package teste.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -13,10 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.jasper.tagplugins.jstl.core.Out;
-
 import teste.dao.AlunoDAO;
 import teste.model.Aluno;
+import weka.core.Instances;
+import weka.core.converters.DatabaseLoader;
 
 @WebServlet(name = "aluno", urlPatterns = "/aluno")
 public class AlunoController extends HttpServlet {
@@ -26,13 +25,26 @@ public class AlunoController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		DatabaseLoader l;
+		try {
+			l = new DatabaseLoader();
+			l.setSource("jdbc:mysql://localhost:3306/apeu", "root", "");
+			l.setQuery(
+					"select dataNasc, status, estadoCivil, raca, distancia, formaIngresso, RFPC, trabalho, reservaVaga from alunos");
+			Instances data = l.getDataSet();
+			System.out.println(data);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("epa.." + e.toString());
+			e.printStackTrace();
+		}
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println(request);
-		String dataNasc = request.getParameter("dataNasc");
+
 		String trabalho = request.getParameter("trabalho");
 		String distancia = request.getParameter("distancia");
 		String raca = request.getParameter("raca");
@@ -54,7 +66,6 @@ public class AlunoController extends HttpServlet {
 			System.out.println(amodel.toString());
 			int saved = AlunoDAO.inserir(amodel);
 
-			PrintWriter out = response.getWriter();
 			if (saved > 0) {
 				request.setAttribute("title", "Sucesso");
 				request.setAttribute("mensagem", "Cadastro realizado com sucesso");
