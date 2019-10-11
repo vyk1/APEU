@@ -32,7 +32,7 @@ public class Aluno {
 	public String trabalho;
 	public String reservaVaga;
 	public int idade;
-	public int intervaloIdade;
+	public String intervaloIdade;
 	
 	public Date getDataNasc() {
 		return dataNasc;
@@ -120,11 +120,11 @@ public class Aluno {
 		return idade;
 	}
 	
-	public int getIntervaloIdade() {
+	public String getIntervaloIdade() {
 		return intervaloIdade;
 	}
 
-	public void setIntervaloIdade(int intervaloIdade) {
+	public void setIntervaloIdade(String intervaloIdade) {
 		this.intervaloIdade = intervaloIdade;
 	}
 

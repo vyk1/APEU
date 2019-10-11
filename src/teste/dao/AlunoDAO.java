@@ -74,11 +74,12 @@ public class AlunoDAO {
 										System.out.println(i);
 
 										try {
-											aluno.setIntervaloIdade(i);
+											String classe = Integer.toString(i);
+											aluno.setIntervaloIdade(classe);
 											System.out.println(aluno.getIntervaloIdade() + aluno.getId());
 											PreparedStatement ps1 = con
 													.prepareStatement("update alunos set intervaloIdade=? where id=?");
-											ps1.setInt(1, aluno.getIntervaloIdade());
+											ps1.setString(1, aluno.getIntervaloIdade());
 											ps1.setInt(2, aluno.getId());
 											ps1.executeUpdate();
 
