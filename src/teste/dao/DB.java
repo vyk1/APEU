@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 
 public class DB {
 
-	static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
+	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	static final String JDBC_TIMEZONE = "useTimezone=true&serverTimezone=UTC";
 	static final String JDBC_URL = "jdbc:mysql://localhost:3306/apeu?";
 	static final String JDBC_USUARIO = "root";
@@ -19,7 +19,7 @@ public class DB {
 	            JDBC_URL+JDBC_TIMEZONE,
 	            JDBC_USUARIO,
 	            JDBC_SENHA);
-	            System.out.println("Conex√£o estabelecida");
+	            System.out.println("Conex„o estabelecida");
 	            return conexao;
 	        } catch(Exception e){
 	            System.out.println(e.toString());

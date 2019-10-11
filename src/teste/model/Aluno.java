@@ -21,6 +21,7 @@ public class Aluno {
 		this.reservaVaga = reservaVaga;
 	}
 
+	public int id;
 	public Date dataNasc;
 	public String status;
 	public String estadoCivil;
@@ -30,7 +31,9 @@ public class Aluno {
 	public String RFPC;
 	public String trabalho;
 	public String reservaVaga;
-
+	public int idade;
+	public int intervaloIdade;
+	
 	public Date getDataNasc() {
 		return dataNasc;
 	}
@@ -103,11 +106,34 @@ public class Aluno {
 		this.reservaVaga = reservaVaga;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	public void setIdade(int idade) {
+		this.idade = idade;
+	}
+	public int getIdade() {
+		return idade;
+	}
+	
+	public int getIntervaloIdade() {
+		return intervaloIdade;
+	}
+
+	public void setIntervaloIdade(int intervaloIdade) {
+		this.intervaloIdade = intervaloIdade;
+	}
+
 	@Override
 	public String toString() {
-		return "Aluno [dataNasc=" + dataNasc + ", status=" + status + ", estadoCivil=" + estadoCivil + ", raca=" + raca
-				+ ", distancia=" + distancia + ", formaIngresso=" + formaIngresso + ", RFPC=" + RFPC + ", trabalho="
-				+ trabalho + ", reservaVaga=" + reservaVaga + "]";
+		return "Aluno [id=" + id + ", dataNasc=" + dataNasc + ", status=" + status + ", estadoCivil=" + estadoCivil
+				+ ", raca=" + raca + ", distancia=" + distancia + ", formaIngresso=" + formaIngresso + ", RFPC=" + RFPC
+				+ ", trabalho=" + trabalho + ", reservaVaga=" + reservaVaga + "]";
 	}
+
 
 }

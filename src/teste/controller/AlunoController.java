@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,8 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import teste.dao.AlunoDAO;
 import teste.model.Aluno;
-import weka.core.Instances;
-import weka.core.converters.DatabaseLoader;
 
 @WebServlet(name = "aluno", urlPatterns = "/aluno")
 public class AlunoController extends HttpServlet {
@@ -25,19 +24,8 @@ public class AlunoController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		DatabaseLoader l;
-		try {
-			l = new DatabaseLoader();
-			l.setSource("jdbc:mysql://localhost:3306/apeu", "root", "");
-			l.setQuery(
-					"select dataNasc, status, estadoCivil, raca, distancia, formaIngresso, RFPC, trabalho, reservaVaga from alunos");
-			Instances data = l.getDataSet();
-			System.out.println(data);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			System.out.println("epa.." + e.toString());
-			e.printStackTrace();
-		}
+//		AlunoDAO.getIdades();
+	AlunoDAO.DF();	
 
 	}
 
