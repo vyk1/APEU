@@ -21,6 +21,78 @@ public class AlunoDAO {
 		this.conexao = conexao;
 	}
 
+	public static int getSingleIdade(Date dataNasc) {
+		int years = 0;
+		Calendar present = Calendar.getInstance();
+		DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			Date dataMat = new Date(fmt.parse("2017-03-01").getTime());
+			present.setTime(dataMat);
+			Calendar past = Calendar.getInstance();
+			past.setTime(dataNasc);
+
+			while (past.before(present)) {
+				past.add(Calendar.YEAR, 1);
+				if (past.before(present)) {
+					years++;
+				}
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return years;
+	}
+
+	public static int getSingleIntervaloIdade(int idade) {
+		try {
+			Connection con = DB.getConn();
+			PreparedStatement ps2 = con.prepareStatement("SELECT COUNT(*) as total FROM `alunos`");
+			ResultSet rs1 = ps2.executeQuery();
+
+			PreparedStatement ps3 = con.prepareStatement("SELECT MIN(idade) AS xmin FROM `alunos`");
+			ResultSet rs2 = ps3.executeQuery();
+
+			PreparedStatement ps4 = con.prepareStatement("SELECT MAX(idade) AS xmax FROM `alunos`");
+			ResultSet rs3 = ps4.executeQuery();
+			List<Aluno> list = new ArrayList<Aluno>();
+
+			while (rs1.next()) {
+				int n = rs1.getInt("total");
+
+				while (rs3.next()) {
+					int xmax = rs3.getInt("xmax");
+					System.out.println(xmax);
+					while (rs2.next()) {
+						int xmin = rs2.getInt("xmin");
+						System.out.println(xmin);
+						int k = (int) Math.ceil(Math.sqrt(n));
+						System.out.println(k);
+						int aa = xmax - xmin;
+						System.out.println(aa);
+						double h = (double) aa / k;
+
+						for (int i = 1; i <= k; i++) {
+							int intervaloFinal = xmin + (k * i);
+							int intervaloInicial = intervaloFinal - k;
+							System.out.println(intervaloInicial + "----" + intervaloFinal);
+
+							if (idade < intervaloFinal && idade >= intervaloInicial) {
+								System.out.println(idade + "<" + intervaloFinal);
+								System.out.println("classe:" + i);
+								System.out.println(i);
+								return i;
+							}
+						}
+					}
+				}
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+			return -1;
+		}
+		return idade;
+	}
+
 	public static void DF() {
 		try {
 			Connection con = DB.getConn();
@@ -48,7 +120,6 @@ public class AlunoDAO {
 						int aa = xmax - xmin;
 						System.out.println(aa);
 						double h = (double) aa / k;
-						int hArred = (int) Math.ceil(h);
 
 						// pega idades
 						for (int i = 1; i <= k; i++) {
@@ -114,13 +185,7 @@ public class AlunoDAO {
 				Aluno bean = new Aluno();
 				bean.setDataNasc(rs.getDate("dataNasc"));
 				bean.setId(rs.getInt("id"));
-//				https://docs.google.com/spreadsheets/d/19MFUosJR49PntulPF398eO68rKf8iTyL6Bwv4ojzYsM/edit#gid=2106746447
-//				https://stackoverflow.com/questions/28802038/java-creating-a-frequency-table-for-integers-randomly-generated-and-placed-in-a
 				list.add(bean);
-				// fazer dist de freq
-				// foreach
-				// para cada obj->update idade where id=obj.getId()
-
 			}
 			for (Aluno aluno : list) {
 
