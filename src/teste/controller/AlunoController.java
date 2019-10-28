@@ -42,7 +42,6 @@ public class AlunoController extends HttpServlet {
 			String raca = request.getParameter("raca");
 			String estadoCivil = request.getParameter("estadoCivil");
 			String RFPC = request.getParameter("RFPC");
-//			String status = request.getParameter("status");
 			String formaIngresso = request.getParameter("formaIngresso");
 			String reservaVaga = request.getParameter("reservaVaga");
 			String dataString = request.getParameter("dataNasc");

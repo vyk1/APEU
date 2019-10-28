@@ -12,7 +12,7 @@
 				<div class="form-check">
 					<label class="form-check-label"> <input type="radio"
 						class="form-check-input" name="status" id="optionsRadios1"
-						value="1" checked=""> Concluído
+						value="1" checked> Concluído
 					</label>
 				</div>
 				<div class="form-check">
@@ -76,15 +76,17 @@
 					<option value="2">Reingresso Automático</option>
 					<option value="3">Portador de Diploma</option>
 					<option value="4">Transferência Voluntária</option>
-					
+
 				</select>
 			</div>
 			<div class="form-group">
 				<label for="exampleSelect1">Reserva de Vaga</label> <select
 					class="form-control" id="reservaVaga" name="reservaVaga">
 					<option value="1">Ampla Concorrência</option>
-					<option value="2">Escola Pública - Renda<=1.5 Salários Mínimos</option>
-					<option value="3">Escola Pública - Renda>1.5 Salários Mínimos</option>
+					<option value="2">Escola Pública - Renda<=1.5 Salários
+						Mínimos</option>
+					<option value="3">Escola Pública - Renda>1.5 Salários
+						Mínimos</option>
 					<option value="4">Reingresso</option>
 					<option value="5">Transferência Interna</option>
 				</select>
@@ -105,7 +107,6 @@
 
 		</fieldset>
 		<button type="submit" class="btn btn-primary">Enviar</button>
-		</fieldset>
 	</div>
 </form>
 

@@ -93,7 +93,6 @@
 		<input type="hidden" id="predizer" name="predizer">
 
 		<button type="submit" class="btn btn-primary">Enviar</button>
-		</fieldset>
 	</div>
 </form>
 
