@@ -4,7 +4,7 @@ Trabalho de Conclusão de Curso - Assistente de Predição a Evasão Universtiá
 # Tecnologias Utilizadas
 Java e WekaAPI
 
-# Publicação preliminar:
+# Publicação Preliminar:
 ```
 @INPROCEEDINGS{199439,
     AUTHOR="Victoria Martins and Ederson Bastiani",
@@ -19,8 +19,10 @@ Java e WekaAPI
     URL="http://XXXXX/199439.pdf"
 }
 ```
+# Documento Oficial
+Confira o .pdf [aqui](./VersãoFinalTCC_VBM_TSI8.docx.pdf)
 
 Autores:
 - Victoria Botelho Martins
-- Professor Renan Souza 
+- Professor Renan Souza
 - Professor Ederson Bastiani
